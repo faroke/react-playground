@@ -82,18 +82,24 @@ function Clock(props) {
     }, []);
     
     const [date, setDate] = React.useState(new Date());
-
+    const [style, setStyle] = React.useState();
     const tick = () => {
         setInterval(() => {
             setDate(new Date())
         }, 1000)
     }
-    
+    const changeColor = (color) => {
+        // source : https://www.sitepoint.com/generating-random-color-values/
+        const hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+        setStyle({color: color ? color : hue})
+    }
 
     return (
         <div>
-            <h1>Hello world</h1>
+            <h1 style={style}>Hello world</h1>
             <h2>Il est {date.toLocaleTimeString()}.</h2>
+            <button onClick={() => changeColor(false)}>New</button>
+            <button onClick={() => changeColor(true)}>Reset</button>
         </div>
         );
 }
