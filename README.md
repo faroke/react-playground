@@ -10,7 +10,7 @@ Pour cet exercice nous allons procéder d'une manière un peu bizarre que vous n
 
 Lisez bien cette partie de la documentation
 
-Ajoutons donc ce nouveau script juste avant notre `main.js`.
+Ajoutons donc ce nouveau script juste avant notre `main.jsx`.
 
 Ensuite modifions notre code précédent afin d'utiliser la syntaxe JSX
 
