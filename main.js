@@ -44,13 +44,15 @@ function Clock(props) {
         ); */
 
         // Solution Bonus
-
+        const [isLogged, setIsLogged] = React.useState(false);
         return (
             <div>
                 <h1>Hello world</h1>
                 <h2 style={{color: textColor}}>Il est {date.toLocaleTimeString()}.</h2>
                 <button onClick={stopClock}>Stop</button>
                 <button onClick={restartClock}>Reprendre</button>
+                <button onClick={() => setIsLogged(!isLogged)}>Change logged status</button>
+                {isLogged && <h3>Vous êtes connecté !</h3>}
             </div>
             );
 }
