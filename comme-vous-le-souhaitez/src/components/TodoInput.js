@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {v4 as uuid} from 'uuid';
 export default function TodoInput({value}) {
-    console.log(value)
     const {list, setList} = value;
     const [item, setItem] = useState('');
     const newTodo = (item) => {
