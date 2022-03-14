@@ -1,5 +1,3 @@
-
-
 // -------------------------------------------
 // Étape 1 => On modifie le composant input
 // -------------------------------------------
@@ -51,31 +49,24 @@ function NameForm(props) {
     }
 
 
-
-    return(
-    <form onSubmit={handleSubmit}>
-        <label>
-        Nom :
-        <input type="text" value={name} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Envoyer" />
-    </form>
-);
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Nom :
+                <input type="text" value={name} onChange={handleChange}/>
+            </label>
+            <input type="submit" value="Envoyer"/>
+        </form>
+    );
 }
-
 
 
 // ReactDOM.render(<NameForm />, document.querySelector('#app'));
 
 
-
-
-
-
 // -------------------------------------------
 // Étape 2 => On modifie le composant textarea
 // -------------------------------------------
-
 
 
 /* class EssayForm extends React.Component {
@@ -123,27 +114,23 @@ function EssayForm(props) {
         e.preventDefault();
         console.log(`Le texte a été soumis: ${text}`);
     }
-      
-    return(
+
+    return (
         <form onSubmit={handleSubmit}>
-          <label>
-            Essay:
-            <textarea rows={5} cols={35} value={text} onChange={handleChange} />
-          </label>
-          <input type="submit" value="Envoyer" />
+            <label>
+                Essay:
+                <textarea rows={5} cols={35} value={text} onChange={handleChange}/>
+            </label>
+            <input type="submit" value="Envoyer"/>
         </form>
 
-      )
+    )
 
 
-  }
-
+}
 
 
 //   ReactDOM.render(<EssayForm />, document.querySelector('#app'));
-
-
-
 
 
 // -------------------------------------------
@@ -198,27 +185,24 @@ function FlavorForm(props) {
         console.log(`la valeur sélectionnée est: ${value}`);
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
-          <label>
-            Choisissez votre parfum favori :
-            <select value={value} onChange={handleChange}>
-              <option value="grapefruit">Pamplemousse</option>
-              <option value="lime">Citron vert</option>
-              <option value="coconut">Noix de coco</option>
-              <option value="mango">Mangue</option>
-            </select>
-          </label>
-          <input type="submit" value="Envoyer" />
+            <label>
+                Choisissez votre parfum favori :
+                <select value={value} onChange={handleChange}>
+                    <option value="grapefruit">Pamplemousse</option>
+                    <option value="lime">Citron vert</option>
+                    <option value="coconut">Noix de coco</option>
+                    <option value="mango">Mangue</option>
+                </select>
+            </label>
+            <input type="submit" value="Envoyer"/>
         </form>
     );
 }
 
 
-
 //ReactDOM.render(<FlavorForm/>, document.querySelector('#app'));
-
-
 
 
 function MultiForm(props) {
@@ -228,46 +212,45 @@ function MultiForm(props) {
         value: "coconut"
     });
 
-    
 
-/*     
+    /*
 
-    // useCallback n'est pas forcément le meilleur choix ici
+        // useCallback n'est pas forcément le meilleur choix ici
 
-    
-    const handleChange = React.useCallback(
-        ({target: {name, value}}) => {
-            setInputs(state => ({...state, [name]: value}), []);
-            console.log(inputs);
-        },
-        [inputs]
-    )
 
- */
+        const handleChange = React.useCallback(
+            ({target: {name, value}}) => {
+                setInputs(state => ({...state, [name]: value}), []);
+                console.log(inputs);
+            },
+            [inputs]
+        )
 
-    
+     */
+
+
     const handleChange = ({target: {name, value}}) => {
         setInputs(state => ({...state, [name]: value}), []);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        for(const name in inputs) {
+        for (const name in inputs) {
             console.log(`${name}: ${inputs[name]}`)
         }
     }
 
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <label>
                 Nom :
-                <input type="text" name="name" value={inputs.name} onChange={handleChange} />
+                <input type="text" name="name" value={inputs.name} onChange={handleChange}/>
             </label>
 
             <label>
                 Essay:
-                <textarea name="text" value={inputs.text} onChange={handleChange} />
+                <textarea name="text" value={inputs.text} onChange={handleChange}/>
             </label>
 
             <label>
@@ -280,9 +263,26 @@ function MultiForm(props) {
                 </select>
             </label>
 
-            <input type="submit" value="Envoyer" />
+            <input type="submit" value="Envoyer"/>
         </form>
     )
 }
 
-ReactDOM.render(<MultiForm />, document.querySelector('#app'));
+
+function BaseNumberInput({onChangeBase}) {
+    if(onChangeBase.base)
+        return parseFloat(onChangeBase.value);
+    return parseInt(onChangeBase.value.toString(2));
+}
+
+function App() {
+    const decimal = {base: true, value : 45645456465};
+    const binaire = {base: false, value : 52};
+    return (<div>
+        <BaseNumberInput onChangeBase={decimal}/>
+        <BaseNumberInput onChangeBase={binaire}/>
+    </div>);
+}
+
+
+ReactDOM.render(<App/>, document.querySelector('#app'));
