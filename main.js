@@ -1,3 +1,24 @@
+class Tick extends React.Component {
+    render() {
+        return <div>
+            <h1>Hello World !</h1>
+            <h2>Il est {new Date().toLocaleTimeString()}.</h2>
+        </div>
+    }
+}
+class ClockClass extends React.Component{
+    render(){
+        return (
+            <div>
+                <h1>Bonjour, monde !</h1>
+                <h2>Il est {this.props.date.toLocaleTimeString()}.</h2>
+            </div>
+        );
+
+    }
+}
+
+
 const firstName = 'r0ulito';
 const lastName = 'formateur';
 
