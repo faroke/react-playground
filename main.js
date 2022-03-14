@@ -269,18 +269,18 @@ function MultiForm(props) {
 }
 
 
-function BaseNumberInput({onChangeBase}) {
-    if(onChangeBase.base)
-        return parseFloat(onChangeBase.value);
-    return parseInt(onChangeBase.value.toString(2));
+function BaseNumberInput({onChangeBase, value}) {
+    if(onChangeBase)
+        return parseFloat(value);
+    return parseInt(value.toString(2));
 }
 
 function App() {
     const decimal = {base: true, value : 45645456465};
     const binaire = {base: false, value : 52};
     return (<div>
-        <BaseNumberInput onChangeBase={decimal}/>
-        <BaseNumberInput onChangeBase={binaire}/>
+        <BaseNumberInput onChangeBase={decimal.base} value={decimal.value}/>
+        <BaseNumberInput onChangeBase={binaire.base} value={binaire.value}/>
     </div>);
 }
 
